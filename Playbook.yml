@@ -1,0 +1,14 @@
+---
+-name: Webserver playbook
+  hosts: ansibleclient
+  
+  tasks:
+    -name: Package installation
+     yum: name=httpd state=present
+     
+    -name:Amending webserver configuration file
+     copy: path=/var/www/html/index.html content="This is my GitHub File"
+     
+     -name: Starting web services
+      service: name=httpd state=started
+...
